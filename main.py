@@ -1,5 +1,6 @@
 import re
 import long_responses as long
+from threading import Timer
 
 
 def message_probability(user_message, recognised_words, single_response=False, required_words=[]):
@@ -59,5 +60,12 @@ def get_response(user_input):
 
 
 # Testing the response system
-while True:
-    print('Bot: ' + get_response(input('You: ')))
+def func():
+    while True:
+        print('Bot: ' + get_response(input('You: ')))
+
+# func()
+print('##################################################');
+print('Bot is Running in 3 sec..........................................')
+r = Timer(3.0, func)
+r.start()
