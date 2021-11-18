@@ -1,4 +1,6 @@
 import re
+import time
+import os
 import long_responses as long
 from threading import Timer
 
@@ -27,6 +29,7 @@ def message_probability(user_message, recognised_words, single_response=False, r
     else:
         return 0
 
+# ------------------------------------------------------------------------------------------------
 
 def check_all_messages(message):
     highest_prob_list = {}
@@ -64,8 +67,33 @@ def func():
     while True:
         print('Bot: ' + get_response(input('You: ')))
 
+
 # func()
-print('##################################################');
-print('Bot is Running in 3 sec..........................................')
-r = Timer(3.0, func)
+print('##################################################')
+print('Bot is Running in 4 sec..........................................')
+bar = [
+    " ...                                                                                                       ",
+    "        ...                                                                                                ",
+    "                   ...                                                                                     ",
+    "                                ...                                                                        ",
+    "                                             ...                                                           ",
+    "                                                       ...                                                 ",
+    "                                                               ...                                         ",
+    "                                                       ...                                                 ",
+    "                                            ...                                                            ",
+    "                               ...                                                                         ",
+    "                  ...                                                                                      ",
+    "         ...                                                                                               ",
+    " ...                                                                                                       ",
+]
+i = 0
+
+while True:
+    print(bar[i % len(bar)], end="\r")
+    time.sleep(.1)
+    i += 1
+    if i == 30:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        break
+r = Timer(3.5, func)
 r.start()
